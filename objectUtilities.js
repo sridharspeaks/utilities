@@ -42,7 +42,7 @@ Object.defineProperties(Object.prototype, {
                 throw `Invalid Path(s): ${paths}`;
             }
         else
-            if (['string', 'number'].some(keyType = > keyType == typeof paths))
+            if (['string', 'number'].some(keyType => keyType == typeof paths))
             {
                 paths = paths.toString();
                 if (paths === '*') {
@@ -53,15 +53,15 @@ Object.defineProperties(Object.prototype, {
             }
         else
             if (Array.isArray(paths)) {
-                return paths.map(path = > {
-                    if((!path && path != 0) || !['object', 'string', 'number'].some(keyType = > keyType == typeof path
+                return paths.map(path => {
+                    if((!path && path != 0) || !['object', 'string', 'number'].some(keyType => keyType == typeof path
             ))
                 {
                     throw `Invalid Path: ${path}`;
                 }
             else
                 {
-                    if (['string', 'number'].some(keyType = > keyType == typeof path))
+                    if (['string', 'number'].some(keyType => keyType == typeof path))
                     {
                         path = path.toString();
                         if (path === '*') {
@@ -100,7 +100,7 @@ Object.defineProperties(Object.prototype, {
             function resolveKey(keys) {
                 obj = Object.assign(that, {});
                 keys = keys.replace(/(\.\*\.)|(\.\*$)/g, '.').split('.');
-                keys.forEach(key = > {
+                keys.forEach(key => {
                     function recursive(obj, key)
                 {
                     var keyStrip = key.replace(/(^\*)/g, ''), arr = {};
