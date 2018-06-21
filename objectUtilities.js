@@ -59,24 +59,26 @@ Object.defineProperties(Object.prototype, {
                         }
                     } else {//object
                         var newKey = Object.keys(path)[0];
+                        var newVal = path[newKey].split('.').pop().replace(/((^\*))|(\[[0-9]+\])/, '');
                         if (path[newKey] === '*') return {[newKey] : that};
-                        var newVal = resolveKey(path[newKey]);
-                        if (newVal && typeof newVal === 'object' && newVal.evalKey(newKey)) {
-                            return {[newKey]: newVal.evalKey(newKey)};
+                        var result = resolveKey(path[newKey]);
+                        if (result && typeof result === 'object' && result[newKey]) {
+                            return {[newKey]: result.evalKey(newKey)};
                         } else {
-                            return {[newKey]: newVal};
+                            return {[newKey]: result[newVal] || result};
                         }
                     }
                 }
             });
             } else {//object
                 var newKey = Object.keys(paths)[0];
+                var newVal = paths[newKey].split('.').pop().replace(/((^\*))|(\[[0-9]+\])/, '');
                 if (paths[newKey] === '*') return {[newKey] : that};
-                var newVal = resolveKey(paths[newKey]);
-                if (newVal && typeof newVal === 'object' && newVal.evalKey(newKey)) {
-                    return {[newKey]: newVal.evalKey(newKey)};
+                var result = resolveKey(paths[newKey]);
+                if (result && typeof result === 'object' && result[newKey]) {
+                    return {[newKey]: result.evalKey(newKey)};
                 } else {
-                    return {[newKey]: newVal};
+                    return {[newKey]: result[newVal] || result};
                 }
             }
 
