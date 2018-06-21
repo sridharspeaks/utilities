@@ -1,4 +1,4 @@
-/***********************objectResolveByPaths: Sridhar Gudimela**********************************/
+/***********************objectUtilities: Sridhar Gudimela**********************************/
 /*DISCLAIMER: As Long as the above original auth name and this disclaimer maintained, this code is free to use.
 Author is not responsible for any software issues that may cause due to the usage of this code*/
 
